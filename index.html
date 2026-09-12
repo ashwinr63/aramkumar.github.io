@@ -1,436 +1,181 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Portfolio</title>
-    <style>
-        /* Modern CSS Reset */
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ashwin Ramkumar — Forward Deployed AI Engineer</title>
+    <meta name="description" content="Ashwin Ramkumar — Forward Deployed AI Engineer at Intellect Design Arena. Product + engineering across multi‑cloud, DevSecOps, infra, and MLOps. Builder who ships." />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="theme-color" content="#0b0f14" />
+    <meta property="og:title" content="Ashwin Ramkumar — Forward Deployed AI Engineer" />
+    <meta property="og:description" content="Resume‑style, scannable profile. Multi‑cloud, DevSecOps, infra, MLOps. Selected work and stack." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@ashramku" />
+    <link rel="preload" href="styles.css" as="style" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="wrap">
+        <div class="brand">Ashwin</div>
+        <nav aria-label="Primary">
+          <ul class="nav">
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Selected work</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
 
-        /* Custom Properties */
-        :root {
-            --primary: #4F46E5;
-            --secondary: #7C3AED;
-            --dark: #111827;
-            --light: #F9FAFB;
-        }
-
-        /* Smooth Scroll Behavior */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: system-ui, -apple-system, sans-serif;
-            line-height: 1.5;
-            color: var(--light);
-            background: var(--dark);
-        }
-
-        /* Animation Keyframes */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
-        }
-
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* Utility Classes */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-primary {
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            color: white;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
-        }
-
-        .btn-outline {
-            border: 2px solid var(--primary);
-            color: var(--primary);
-        }
-
-        .btn-outline:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-3px);
-        }
-
-        /* Navigation */
-        .nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 1.5rem 0;
-            background: rgba(17, 24, 39, 0.8);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        .nav-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradientBG 3s ease infinite;
-            background-size: 200% 200%;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: var(--light);
-            text-decoration: none;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: linear-gradient(135deg, #1a1a2e, #16213e, #1a1a2e);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-        }
-
-        .hero-content > * {
-            opacity: 0;
-            animation: fadeInUp 1s ease forwards;
-        }
-
-        .hero-title {
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
-            animation-delay: 0.2s;
-        }
-
-        .hero-subtitle {
-            font-size: 1.5rem;
-            color: #9CA3AF;
-            margin-bottom: 2rem;
-            animation-delay: 0.4s;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            animation-delay: 0.6s;
-        }
-
-        /* Projects Section */
-        .projects {
-            padding: 8rem 0;
-            background: #1a1a2e;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 4rem;
-        }
-
-        .project-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        .project-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .project-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .project-card:hover .project-image {
-            transform: scale(1.05);
-        }
-
-        .project-content {
-            padding: 1.5rem;
-        }
-
-        .project-title {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .project-description {
-            color: #9CA3AF;
-            margin-bottom: 1rem;
-        }
-
-        .project-tags {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-
-        .tag {
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            background: rgba(79, 70, 229, 0.1);
-            color: var(--primary);
-            font-size: 0.875rem;
-        }
-
-        /* Contact Section */
-        .contact {
-            padding: 8rem 0;
-            background: linear-gradient(135deg, #1a1a2e, #16213e);
-            text-align: center;
-        }
-
-        .contact-title {
-            font-size: 3rem;
-            margin-bottom: 2rem;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .social-link {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .social-link:hover {
-            transform: translateY(-5px);
-            background: var(--primary);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 3rem;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
-</head>
-<body>
-    <!-- Navigation -->
-    <nav class="nav">
-        <div class="container nav-content">
-            <div class="nav-logo">YN</div>
-            <div class="nav-links">
-                <a href="#about">About</a>
-                <a href="#projects">Projects</a>
-                <a href="#contact">Contact</a>
-            </div>
+    <main id="main" class="site-main">
+      <section class="identity" aria-labelledby="identity-title">
+        <div class="wrap">
+          <h1 id="identity-title">Ashwin Ramkumar</h1>
+          <p class="role">Forward Deployed AI Engineer at Intellect Design Arena Ltd</p>
+          <p class="lead">
+            Product + engineering across multi‑cloud, DevSecOps, infra, and MLOps — a builder who ships.
+          </p>
+          <ul class="links">
+            <li><a href="https://github.com/ashwinr63" rel="me noopener" target="_blank">GitHub</a></li>
+            <li><a href="https://www.linkedin.com/in/ramkash/" rel="me noopener" target="_blank">LinkedIn</a></li>
+            <li><a href="https://twitter.com/ashramku" rel="me noopener" target="_blank">Twitter · @ashramku</a></li>
+            <li class="muted">More: <a href="https://ashwinramkumar.netlify.app" rel="noopener" target="_blank">ashwinramkumar.netlify.app</a></li>
+          </ul>
         </div>
-    </nav>
+      </section>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container hero-content">
-            <h1 class="hero-title">Hi, I'm <span style="color: var(--primary);">Your Name</span></h1>
-            <p class="hero-subtitle">Full Stack Developer • UI/UX Designer • Tech Enthusiast</p>
-            <div class="hero-buttons">
-                <a href="#projects" class="btn btn-primary">View Projects</a>
-                <a href="#contact" class="btn btn-outline">Contact Me</a>
-            </div>
+      <section id="about" aria-labelledby="about-title">
+        <div class="wrap">
+          <h2 id="about-title">About</h2>
+          <p>
+            I work hands‑on with product and engineering teams to ship AI‑powered systems end‑to‑end — from cloud
+            infrastructure and DevSecOps to MLOps and application layers.
+          </p>
         </div>
-    </section>
+      </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2 class="project-title">Featured Projects</h2>
-            <div class="projects-grid">
-                <!-- Project Card 1 -->
-                <div class="project-card">
-                    <img src="/api/placeholder/400/300" alt="Project 1" class="project-image">
-                    <div class="project-content">
-                        <h3 class="project-title">Project Name</h3>
-                        <p class="project-description">A modern web application built with React and Node.js</p>
-                        <div class="project-tags">
-                            <span class="tag">React</span>
-                            <span class="tag">Node.js</span>
-                            <span class="tag">MongoDB</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project Card 2 -->
-                <div class="project-card">
-                    <img src="/api/placeholder/400/300" alt="Project 2" class="project-image">
-                    <div class="project-content">
-                        <h3 class="project-title">Project Name</h3>
-                        <p class="project-description">AI-powered analytics dashboard with real-time data</p>
-                        <div class="project-tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">TensorFlow</span>
-                            <span class="tag">Vue.js</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project Card 3 -->
-                <div class="project-card">
-                    <img src="/api/placeholder/400/300" alt="Project 3" class="project-image">
-                    <div class="project-content">
-                        <h3 class="project-title">Project Name</h3>
-                        <p class="project-description">Mobile-first e-commerce platform with payment integration</p>
-                        <div class="project-tags">
-                            <span class="tag">React Native</span>
-                            <span class="tag">Firebase</span>
-                            <span class="tag">Stripe</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <section id="experience" aria-labelledby="exp-title">
+        <div class="wrap">
+          <h2 id="exp-title">Experience</h2>
+          <article class="experience-item">
+            <header>
+              <h3>Forward Deployed AI Engineer</h3>
+              <div class="meta">
+                <span class="org">Intellect Design Arena Ltd</span>
+              </div>
+            </header>
+            <p class="summary">
+              Product/engineering across multi‑cloud, infrastructure as code, CI/CD, and MLOps to deliver AI features into production.
+            </p>
+          </article>
         </div>
-    </section>
+      </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="contact-title">Get In Touch</h2>
-            <p>Interested in working together? Let's connect!</p>
-            <div class="social-links">
-                <a href="#" class="social-link">GH</a>
-                <a href="#" class="social-link">LI</a>
-                <a href="#" class="social-link">TW</a>
-            </div>
+      <section id="skills" aria-labelledby="skills-title">
+        <div class="wrap">
+          <h2 id="skills-title">Skills & stack</h2>
+          <ul class="tags">
+            <li>Python</li>
+            <li>FastAPI</li>
+            <li>React</li>
+            <li>TypeScript</li>
+            <li>AWS</li>
+            <li>Docker</li>
+            <li>Terraform</li>
+            <li>GitLab CI/CD</li>
+            <li>Redux</li>
+            <li>Firebase</li>
+            <li>Stripe</li>
+            <li>HuggingFace</li>
+            <li>FAISS</li>
+          </ul>
         </div>
-    </section>
+      </section>
 
+      <section id="projects" aria-labelledby="projects-title">
+        <div class="wrap">
+          <h2 id="projects-title">Selected work</h2>
+          <div class="projects">
+            <article class="project">
+              <header class="project-head">
+                <h3>ClothingStore</h3>
+                <ul class="project-tags">
+                  <li>React</li><li>Redux</li><li>Firebase</li><li>Stripe</li>
+                </ul>
+              </header>
+              <p class="project-line">
+                React/Redux e‑commerce with Firebase auth and Stripe checkout.
+              </p>
+              <p class="project-links">
+                <a href="https://legendary-phoenix-38d061.netlify.app/" target="_blank" rel="noopener">Demo</a>
+                <span aria-hidden="true">·</span>
+                <a href="https://github.com/ashwinr63/ClothingStore" target="_blank" rel="noopener">Repo</a>
+              </p>
+            </article>
+
+            <article class="project">
+              <header class="project-head">
+                <h3>chatbot-crm-app</h3>
+                <ul class="project-tags">
+                  <li>React</li><li>TypeScript</li><li>FastAPI</li><li>HuggingFace</li><li>FAISS</li>
+                </ul>
+              </header>
+              <p class="project-line">
+                CRM support chatbot with semantic search over customer context using HuggingFace/FAISS.
+              </p>
+              <p class="project-links">
+                <a href="https://github.com/ashwinr63/chatbot-crm-app" target="_blank" rel="noopener">Repo</a>
+              </p>
+            </article>
+
+            <article class="project">
+              <header class="project-head">
+                <h3>ecomm_project_react</h3>
+                <ul class="project-tags">
+                  <li>React</li>
+                </ul>
+              </header>
+              <p class="project-line">
+                React storefront.
+              </p>
+              <p class="project-links">
+                <a href="https://ecomm-react-proj.netlify.app/" target="_blank" rel="noopener">Demo</a>
+                <span aria-hidden="true">·</span>
+                <a href="https://github.com/ashwinr63/ecomm_project_react" target="_blank" rel="noopener">Repo</a>
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" aria-labelledby="contact-title">
+        <div class="wrap">
+          <h2 id="contact-title">Contact</h2>
+          <p class="muted">No email listed. Find me here:</p>
+          <ul class="links">
+            <li><a href="https://github.com/ashwinr63" rel="me noopener" target="_blank">github.com/ashwinr63</a></li>
+            <li><a href="https://www.linkedin.com/in/ramkash/" rel="me noopener" target="_blank">linkedin.com/in/ramkash</a></li>
+            <li><a href="https://twitter.com/ashramku" rel="me noopener" target="_blank">twitter.com/ashramku</a></li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <small>© <span id="y">2026</span> Ashwin Ramkumar</small>
+      </div>
+    </footer>
     <script>
-        // Intersection Observer for scroll animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        // Observe all project cards
-        document.querySelectorAll('.project-card').forEach(card => {
-            observer.observe(card);
-        });
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('.nav');
-            if (window.scrollY > 100) {
-                nav.style.padding = '1rem 0';
-                nav.style.background = 'rgba(17, 24, 39, 0.95)';
-            } else {
-                nav.style.padding = '1.5rem 0';
-                nav.style.background = 'rgba(17, 24, 39, 0.8)';
-            }
-        });
+      (function () {
+        var y = document.getElementById('y');
+        if (y) y.textContent = new Date().getFullYear();
+      })();
     </script>
-</body>
+  </body>
 </html>
