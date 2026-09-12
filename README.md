@@ -1,11 +1,12 @@
 Ashwin Ramkumar’s resume-style site built with Vite + React + TypeScript and Framer Motion (reduced-motion respected). Deployed to GitHub Pages as a static build.
 
 Local dev
-- npm install
+- npm ci
 - npm run dev
 - npm run build
 
 GitHub Pages
-- Base path is `/aramkumar.github.io/` (set via Vite `base`)
+- Custom domain: https://ashwinramkumar.dev
+- Assets served from root (`/`) via Vite `base: '/'`
 - Workflow builds on pushes to `main` and deploys `dist` to Pages
-- Live URL (after merge): https://ashwinr63.github.io/aramkumar.github.io/
+- DNS (Cloudflare): CNAME `www` → `ashwinr63.github.io`; apex via CNAME flattening or A records to GitHub Pages IPs
