@@ -1,1 +1,1 @@
-# aramkumar.github.io
+Ashwin Ramkumar’s resume-style site for GitHub Pages. It’s a static, print‑friendly page (`index.html` + `styles.css`) served directly from the repository root—no build step or dependencies. To preview, open the GitHub Pages URL once enabled on this repo or open `index.html` locally in a browser.
